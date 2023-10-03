@@ -27,7 +27,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
 ]
+
+PROJECT_APPS = ['myapp', 'temp_inheritance', "static_render"]
+THIRD_PARTY_APPS = ['django_extensions']
+INSTALLED_APPS += PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,6 +74,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgres',
+#         'NAME': "sept3db",
+#         "USER": "postgres",
+#         "PASSWORD": "password",
+#         "HOST": "127.0.0.1",
+#         "POST": "5432"
+
+#     }
+# }
 
 
 # Password validation

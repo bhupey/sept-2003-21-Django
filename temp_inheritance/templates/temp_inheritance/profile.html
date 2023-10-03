@@ -1,0 +1,27 @@
+{% extends 'temp_inheritance/base.html'%}
+
+{% block content %} 
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.N</th>
+        <th scope="col">Name</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Address</th>
+        <th scope="col">Roll_no</th>
+      </tr>
+    </thead>
+    {% for data in students%}
+    <tbody>
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{data.student.name}}</td>
+        <td>{{data.contact}}</td>
+        <td>{{data.address}}</td>
+        <td>{{data.roll_no}}</td>
+      </tr>
+     
+    </tbody>
+    {%endfor%}
+  </table>
+{% endblock%}

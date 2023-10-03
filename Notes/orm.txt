@@ -1,0 +1,78 @@
+1. ORM stands for Object Relational Mapping
+2. It is a way to query a database without using an actual database query
+3. We use python objects to query the database
+
+ORM examples
+Let's take "Student" as a db table 
+
+Read
+students = Student.objects.all() #ORM
+print(students) #It returns all students
+
+students= Student.objects.filter(age=30)
+print(students)  #Queryset
+
+
+students= Student.objects.get(id = 1)
+print(students)  <student Obj>
+
+Note: 1. If we "get" with the value not present in the table then it raises "DoesNotExistError"
+If we "filter" with the value not present in the table then it returns empty Queryset
+
+
+    2. If we get the value present multiple times in the table then it raises "MultipleObjectReturned" error
+    If we "filter" the value present multiple times in the table then it gives queryset  with multiple objects
+
+
+create
+Student.objects.create(name="ABC", age=30, email="a@agmail.com")
+
+
+Update
+Student.objects.filter(name="jon").update(name="jone")
+
+s = Student.objects.get(id=1)
+s.name = "Gita"
+s.save()
+
+
+
+Delete
+Student.objects.filter(id=100).delete()
+Student.objects.get(id=100).delete()
+
+
+
+
+Student.objects.all()[1:2] #slicing
+
+Student.objects.filter(age__gt= 30) # age greater than 30
+Student.objects.filter(age__lt= 30) # age less than 30
+Student.objects.filter(age__lte= 30) # less than or equals
+Student.objects.filter(age__gte= 30) #greater than or equal
+Student.objects.filter(age__range= (10,30)) # age from 10 to 30
+Student.objects.filter(age__in= [1,2,3]) #checks multiple value
+Student.objects.filter(name__contains= "n") # check if name contains n in it. LIKE operator
+Student.objects.filter(name__icontains= "n") # it does care about the letter case. In newer version it does not needs icontains
+Student.objects.filter(name__endswith= "n") # check if data ends with n
+Student.objects.filter(name__iendswith= "n") #case insensitive
+Student.objects.filter(name__startswith= "n") #check if the letter starts with 
+Student.objects.filter(name="Anukul" , age = 13) # ',' means and operator
+import django.db.models import Q
+Student.objects.filter(Q(name="Anukul")|Q(age="21")) # OR Operator uses Q and have to import in views
+Student.objects.exclude(id=1) # works as NOT Operator
+Student.objects.filter(Classroom__isnull=True) #checks if classroom table have null values
+Student.objects.filter(Classroom__isnull=False) #checks if classroom column is not null
+Student.objects.all().count() # count the number of data  can also be used with filter
+Student.objects.filter().count()
+Student.objects.all().order_by("id") #order in ascending order
+Student.objects.all().order_by("-id") # decending order
+Student.objects.all().order_by("name","age") # gives priority for name and then age
+Student.objects.filter(classroom__name="one") #__name uses the data from classroom table
+StudentProfile.objects.filter(student__age=21) #it gives access to the column of age from Student Profile table
+
+From parent table to child table
+
+Student.objects.filter(studentprofile__address = "Kadaghari") # use related name
+Classroom.objects.filter(classroom_students__name = "Bhupendra") #can access the data of child table from parent table
+Student.objects.filter(studentprofile__address__isnull = False) #checks if the student do not have profile

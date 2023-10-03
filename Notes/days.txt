@@ -1,0 +1,9 @@
+1. Django Introduction
+2. App introduction and templet rendering
+3. Template Inheritance, Models
+4. Models
+5. Models Relations
+6. One-Many Relations
+7. Advance ORM, static rendering
+8. postgresDB CONNECT
+9. Template forms
