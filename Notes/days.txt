@@ -7,3 +7,4 @@
 7. Advance ORM, static rendering
 8. postgresDB CONNECT
 9. Template forms
+10. Crud operations

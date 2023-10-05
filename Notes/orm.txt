@@ -44,6 +44,13 @@ Student.objects.get(id=100).delete()
 
 
 
+FOr many to many
+Let a1, a2, a3 be Article objects and p1,p2,p3 be publication objects
+a1.publication.add(p2)
+a1.publication.add(p1)
+
+
+
 Student.objects.all()[1:2] #slicing
 
 Student.objects.filter(age__gt= 30) # age greater than 30
