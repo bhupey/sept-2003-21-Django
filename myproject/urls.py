@@ -8,8 +8,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('crud.urls')),
     path('', include('myapp.urls')),
+    path('cb/', include('classbased.urls')),
     path('forms', include("temp_forms.urls")),
     path('inherit/', include('temp_inheritance.urls')),
+    path('api/', include('api.urls')),
     path('sr/',include('static_render.urls'))
     
 ] 
